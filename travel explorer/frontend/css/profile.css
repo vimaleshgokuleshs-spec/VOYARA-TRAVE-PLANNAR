@@ -1,0 +1,284 @@
+/* ==========================================================================
+   VOYARA MY TRIPS & PROFILE STYLES
+   Destination cover photos, elegant status tags & polished empty states
+   ========================================================================== */
+
+.profile-header-area {
+  padding-top: calc(var(--nav-height) + var(--space-6));
+  padding-bottom: var(--space-6);
+}
+
+.profile-hero-backdrop {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center 35%;
+  border: 1px solid var(--color-border-glass);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-hero-overlay {
+  background: linear-gradient(90deg, rgba(3, 7, 18, 0.88) 0%, rgba(6, 11, 20, 0.75) 55%, rgba(8, 15, 29, 0.5) 100%);
+  padding: var(--space-6) var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.profile-hero-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.profile-user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.profile-avatar-large {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: #030712;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.profile-name {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.profile-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.profile-stats-chips {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.profile-stat-pill {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  text-align: center;
+}
+
+.profile-stat-pill strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: #ffffff;
+}
+
+.profile-stat-pill span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-champagne);
+}
+
+/* Profile Tabs */
+.profile-nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: var(--space-2);
+}
+
+.profile-tab-link {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.profile-tab-link.active {
+  color: #ffffff;
+}
+
+.profile-tab-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-champagne);
+  border-radius: var(--radius-full);
+}
+
+/* Trip Card in Profile (Large photographic cover) */
+.profile-trips-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-16);
+}
+
+.trip-card-item {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.trip-card-item:hover {
+  transform: translateY(-4px);
+  background: var(--color-bg-glass-hover);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.trip-card-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background-color: #030712;
+  overflow: hidden;
+}
+
+.trip-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trip-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(3, 7, 18, 0.85) 100%);
+  pointer-events: none;
+}
+
+.trip-status-pill {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+}
+
+.status-confirmed {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-draft {
+  background: rgba(197, 160, 89, 0.15);
+  color: var(--accent-champagne);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.status-completed {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--color-text-muted);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.trip-card-details {
+  padding: var(--space-5);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-card-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.trip-card-dates {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.trip-card-stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  margin-bottom: var(--space-4);
+  font-size: 0.72rem;
+}
+
+.trip-card-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: auto;
+}
+
+/* Phase Notice Alert Banner */
+.phase-notice-box {
+  background: rgba(10, 17, 32, 0.7);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.phase-notice-box strong {
+  color: var(--accent-champagne);
+}

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030712">
+  <meta name="description" content="VOYARA — Full-Stack Smart Travel Planner. Find your next horizon with intelligent itineraries and transparent budget mastery.">
+  <title>VOYARA — Find Your Next Horizon</title>
+
+  <!-- Typography: Google Fonts (Outfit & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Design System & Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/builder.css">
+  <link rel="stylesheet" href="css/budget.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/auth.css">
+
+  <!-- Animations (GSAP) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- Global Full-Page Cinematic Background with Glossy Finish -->
+  <div class="site-cinematic-bg" id="site-cinematic-bg" aria-hidden="true">
+    <div class="cinematic-bg-photo"></div>
+    <div class="cinematic-bg-gloss"></div>
+    <div class="cinematic-bg-vignette"></div>
+  </div>
+
+  <!-- Translucent Blurred Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#discover" class="brand-logo">
+        <div class="brand-icon">✧</div>
+        <div class="brand-text-wrap">
+          <span class="brand-title">VOYARA</span>
+          <span class="brand-tagline-mini">Find your next horizon</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu">
+        <li><a href="#discover" class="nav-link active">Discover</a></li>
+        <li><a href="#destinations" class="nav-link">Destinations</a></li>
+        <li><a href="#builder" class="nav-link">Itinerary Builder</a></li>
+        <li><a href="#budget" class="nav-link">Budget & Summary</a></li>
+        <li><a href="#trips" class="nav-link">My Trips</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <!-- Currency Selector (INR / USD) -->
+        <div class="currency-switcher-wrap" role="group" aria-label="Currency Selector">
+          <button type="button" class="currency-toggle-btn currency-opt-inr active" onclick="VoyaraCurrency.setCurrency('INR')" title="Indian Rupee (₹)" aria-label="Switch to Indian Rupee (INR)">
+            ₹ INR
+          </button>
+          <button type="button" class="currency-toggle-btn currency-opt-usd" onclick="VoyaraCurrency.setCurrency('USD')" title="US Dollar ($)" aria-label="Switch to US Dollar (USD)">
+            $ USD
+          </button>
+        </div>
+
+        <!-- Wishlist Button with Counter Badge -->
+        <a href="#trips" class="btn-icon-badge" title="Saved Horizons Wishlist" aria-label="View Saved Horizons Wishlist">
+          ♥
+          <span class="badge-counter" id="nav-fav-count">2</span>
+        </a>
+
+        <!-- Sign In Button -->
+        <a href="#signin" class="auth-user-btn" id="nav-auth-btn">
+          <div class="user-avatar-mini">V</div>
+          <span>Sign In</span>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Open Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div>
+      <div class="mobile-drawer-header">
+        <div class="brand-text-wrap">
+          <span class="brand-title">VOYARA</span>
+          <span class="brand-tagline-mini">Find your next horizon</span>
+        </div>
+        <button class="modal-close" id="mobile-drawer-close">&times;</button>
+      </div>
+      
+      <!-- Mobile Currency Switcher -->
+      <div style="margin-bottom: var(--space-4);">
+        <span style="font-size:0.68rem; color:var(--color-text-dim); text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:var(--space-2);">Currency</span>
+        <div class="currency-switcher-wrap" style="width:100%; justify-content:center;" role="group" aria-label="Mobile Currency Selector">
+          <button type="button" class="currency-toggle-btn currency-opt-inr active" style="flex:1; justify-content:center;" onclick="VoyaraCurrency.setCurrency('INR')">
+            ₹ INR
+          </button>
+          <button type="button" class="currency-toggle-btn currency-opt-usd" style="flex:1; justify-content:center;" onclick="VoyaraCurrency.setCurrency('USD')">
+            $ USD
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-drawer-nav">
+        <a href="#discover" class="nav-link">Discover</a>
+        <a href="#destinations" class="nav-link">Destinations</a>
+        <a href="#builder" class="nav-link">Itinerary Builder</a>
+        <a href="#budget" class="nav-link">Budget & Summary</a>
+        <a href="#trips" class="nav-link">My Trips & Wishlist</a>
+        <a href="#signin" class="nav-link" style="color:var(--accent-champagne);">Sign In</a>
+        <a href="#signup" class="nav-link" style="color:var(--accent-teal-light);">Create Account</a>
+      </nav>
+    </div>
+    <div style="font-size:0.75rem; color:var(--color-text-dim);">
+      VOYARA &copy; 2026. Cinematic Smart Travel Planner.
+    </div>
+  </div>
+
+  <!-- MAIN VIEW SCREENS (Managed by router.js) -->
+  <main id="main-content">
+
+    <!-- SCREEN 1: HOME / DISCOVER -->
+    <div id="view-discover" class="view-screen active">
+      <!-- Full-bleed Aerial Hero Section -->
+      <section class="hero-section">
+        <div class="hero-background loaded"></div>
+        <div class="hero-glow-ambient"></div>
+
+        <div class="container hero-content">
+          <div class="hero-badge-pill">
+            <span class="pulse-dot"></span>
+            <span>Intelligent Horizon Architect</span>
+          </div>
+
+          <h1 class="hero-title">VOYARA</h1>
+          <p class="hero-tagline">Find Your Next <span>Horizon</span></p>
+          <p class="hero-description">
+            Experience the world's most breathtaking sanctuaries with intelligent day-by-day itineraries, cinematic aerial exploration, and transparent budget mastery.
+          </p>
+
+          <!-- Floating Glass Search & Exploration Bar -->
+          <form class="hero-search-glass" id="hero-quick-search-form">
+            <div class="search-field">
+              <span class="search-field-label">Destination / Country</span>
+              <input type="text" class="search-field-input" id="hero-search-query" placeholder="e.g. Bora Bora, Amalfi, Kyoto...">
+            </div>
+
+            <div class="search-field">
+              <span class="search-field-label">Best Window</span>
+              <select class="search-field-select" id="hero-search-season">
+                <option value="all">Any Season</option>
+                <option value="summer">Summer (Jun - Aug)</option>
+                <option value="autumn">Autumn (Sep - Nov)</option>
+                <option value="winter">Winter (Dec - Feb)</option>
+                <option value="spring">Spring (Mar - May)</option>
+              </select>
+            </div>
+
+            <div class="search-field">
+              <span class="search-field-label">Budget Tier</span>
+              <select class="search-field-select" id="hero-search-budget">
+                <option value="all">Any Budget</option>
+                <option value="luxury">Luxury Haven</option>
+                <option value="moderate">Boutique Stay</option>
+                <option value="cozy">Cozy Authentic</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">
+              Explore Horizons &rarr;
+            </button>
+          </form>
+
+          <!-- Quick Stats Row -->
+          <div class="hero-stats-row">
+            <div class="hero-stat-card">
+              <div class="hero-stat-value">50+</div>
+              <div class="hero-stat-label">Hand-Scouted Havens</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="hero-stat-value">100%</div>
+              <div class="hero-stat-label">Free Rule-Based AI</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="hero-stat-value">4.95★</div>
+              <div class="hero-stat-label">Explorer Satisfaction</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="hero-stat-value">0%</div>
+              <div class="hero-stat-label">Hidden Surcharges</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Horizons Carousel / Grid Section -->
+      <section style="padding: var(--space-20) 0; position:relative;">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Curated Global Sanctuaries</span>
+            <h2 class="section-title">Iconic Paradises Awaiting You</h2>
+            <p class="section-desc">Handpicked tropical atolls, cliffside villages, and alpine sanctuaries selected for their unforgettable atmospheres.</p>
+          </div>
+
+          <div class="destinations-grid" id="featured-destinations-row">
+            <!-- Rendered dynamically by discover.js -->
+          </div>
+
+          <div style="text-align: center; margin-top: var(--space-8);">
+            <a href="#destinations" class="btn btn-secondary btn-lg">
+              View All 50+ Global Horizons &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Showcase Section -->
+      <section class="features-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">The Voyara Difference</span>
+            <h2 class="section-title">Engineered For Discerning Travelers</h2>
+            <p class="section-desc">Traditional travel tools give you generic lists. Voyara delivers architectural precision with cinematic beauty.</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-box">
+              <div class="feature-icon-wrap">⚡</div>
+              <h3 class="feature-title">Intelligent Rule-Based Engine</h3>
+              <p class="feature-desc">
+                Generate balanced, day-by-day itineraries tailored to your pace without requiring costly third-party AI keys or recurring subscription fees.
+              </p>
+            </div>
+
+            <div class="feature-box">
+              <div class="feature-icon-wrap">💎</div>
+              <h3 class="feature-title">Transparent Cost Telemetry</h3>
+              <p class="feature-desc">
+                View instant breakdowns of accommodations, signature activities, dining, and transit. Real-time simulator lets you fine-tune luxury tiers.
+              </p>
+            </div>
+
+            <div class="feature-box">
+              <div class="feature-icon-wrap">🌊</div>
+              <h3 class="feature-title">Cinematic Photography</h3>
+              <p class="feature-desc">
+                Full-bleed aerial island photography, deep gradient overlays, and rich coordinates transport you to your destination before you even pack.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom CTA Banner -->
+          <div class="cta-horizon-banner">
+            <div>
+              <span class="badge badge-teal" style="margin-bottom:var(--space-2);">Your Journey Awaits</span>
+              <h2 style="font-size:clamp(1.8rem, 2.8vw, 2.4rem); color:#fff; margin-bottom:var(--space-2);">Ready to craft your custom horizon?</h2>
+              <p style="color:var(--color-text-secondary); max-width:550px; font-size:var(--text-sm);">
+                Start building an intelligent day-by-day itinerary in seconds, calculate expenses transparently, and save your dream trips.
+              </p>
+            </div>
+            <a href="#builder" class="btn btn-primary btn-lg">
+              Launch Itinerary Builder &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SCREEN 2: EXPLORE DESTINATIONS -->
+    <div id="view-destinations" class="view-screen">
+      <div class="container explore-header-area">
+        <!-- Cinematic Destination Directory Banner -->
+        <div class="explore-hero-backdrop">
+          <div class="explore-hero-overlay">
+            <div>
+              <span class="explore-hero-badge-pill" style="margin-bottom:var(--space-2);">Global Directory</span>
+              <h1 class="section-title" style="margin-bottom: var(--space-2); color: #fff;">Curated Expeditions & Horizons</h1>
+              <p class="section-desc" style="max-width: 650px; margin: 0;">Explore handpicked global destinations filtered by continent, climate, seasonal window, and daily pace.</p>
+            </div>
+            <div class="explore-hero-badge-pill">
+              <span class="pulse-dot"></span>
+              <span>50+ Scouted Horizons</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Controls Toolbar -->
+        <div class="explore-toolbar">
+          <div class="search-input-wrap">
+            <span class="search-icon-inline">🔍</span>
+            <input type="text" class="form-control" id="destinations-search-input" placeholder="Search by destination name, country or tag...">
+          </div>
+
+          <div class="filter-pills-row">
+            <button class="filter-pill active" data-region="all">All Horizons</button>
+            <button class="filter-pill" data-region="Europe">Europe</button>
+            <button class="filter-pill" data-region="Asia">Asia</button>
+            <button class="filter-pill" data-region="Americas">Americas</button>
+            <button class="filter-pill" data-region="Oceania">Oceania</button>
+            <button class="filter-pill" data-region="Africa">Africa</button>
+            <button class="filter-pill" data-region="Tropical">Tropical</button>
+          </div>
+
+          <div class="filter-selects-row">
+            <select class="filter-select" id="dest-filter-season">
+              <option value="all">Any Season</option>
+              <option value="summer">Summer (Jun-Aug)</option>
+              <option value="autumn">Autumn (Sep-Nov)</option>
+              <option value="winter">Winter (Dec-Feb)</option>
+              <option value="spring">Spring (Mar-May)</option>
+            </select>
+
+            <select class="filter-select" id="dest-filter-sort">
+              <option value="popular">Top Rated ★</option>
+              <option value="cost-asc">Cost: Low to High</option>
+              <option value="cost-desc">Cost: High to Low</option>
+              <option value="name">Alphabetical</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Results Counter -->
+        <div style="margin-bottom: var(--space-4); font-size: var(--text-xs); color: var(--accent-cyan); font-weight: 600;" id="destinations-count-label">
+          Displaying curated horizons
+        </div>
+
+        <!-- Grid Container -->
+        <div class="destinations-grid" id="destinations-cards-grid">
+          <!-- Rendered dynamically by destinations.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: DESTINATION DETAILS -->
+    <div id="view-detail" class="view-screen">
+      <!-- Populated dynamically by detail.js -->
+    </div>
+
+    <!-- SCREEN 4: SMART ITINERARY BUILDER -->
+    <div id="view-builder" class="view-screen">
+      <!-- Populated dynamically by builder.js -->
+    </div>
+
+    <!-- SCREEN 5: BUDGET & TRIP SUMMARY -->
+    <div id="view-budget" class="view-screen">
+      <!-- Populated dynamically by budget.js -->
+    </div>
+
+    <!-- SCREEN 6: MY TRIPS & PROFILE -->
+    <div id="view-trips" class="view-screen">
+      <!-- Populated dynamically by profile.js -->
+    </div>
+
+    <!-- SCREEN 7: SIGN IN PAGE -->
+    <div id="view-signin" class="view-screen">
+      <!-- Populated dynamically by auth.js -->
+    </div>
+
+    <!-- SCREEN 8: CREATE ACCOUNT PAGE -->
+    <div id="view-signup" class="view-screen">
+      <!-- Populated dynamically by auth.js -->
+    </div>
+
+  </main>
+
+  <!-- Global Luxury Translucent Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:var(--space-8); margin-bottom:var(--space-12);" class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom:var(--space-4);">
+            <div class="brand-icon">✧</div>
+            <div class="brand-text-wrap">
+              <span class="brand-title">VOYARA</span>
+              <span class="brand-tagline-mini">Find your next horizon</span>
+            </div>
+          </div>
+          <p style="color:var(--color-text-muted); font-size:var(--text-sm); line-height:1.7; max-width:340px;">
+            Full-Stack Smart Travel Planner delivering cinematic exploration, rule-based itinerary generation, and transparent budget precision.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-size:var(--text-sm); text-transform:uppercase; letter-spacing:0.12em; color:#fff; margin-bottom:var(--space-4);">Navigation</h4>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:var(--space-2); font-size:var(--text-sm);">
+            <li><a href="#discover" style="color:var(--color-text-muted); text-decoration:none;">Discover</a></li>
+            <li><a href="#destinations" style="color:var(--color-text-muted); text-decoration:none;">Destinations</a></li>
+            <li><a href="#builder" style="color:var(--color-text-muted); text-decoration:none;">Itinerary Builder</a></li>
+            <li><a href="#budget" style="color:var(--color-text-muted); text-decoration:none;">Budget Summary</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:var(--text-sm); text-transform:uppercase; letter-spacing:0.12em; color:#fff; margin-bottom:var(--space-4);">Account</h4>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:var(--space-2); font-size:var(--text-sm);">
+            <li><a href="#trips" style="color:var(--color-text-muted); text-decoration:none;">My Expeditions</a></li>
+            <li><a href="#signin" style="color:var(--color-text-muted); text-decoration:none;">Sign In</a></li>
+            <li><a href="#signup" style="color:var(--color-text-muted); text-decoration:none;">Create Account</a></li>
+            <li><a href="#trips" style="color:var(--color-text-muted); text-decoration:none;">Saved Wishlist</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:var(--text-sm); text-transform:uppercase; letter-spacing:0.12em; color:#fff; margin-bottom:var(--space-4);">Architecture</h4>
+          <p style="font-size:var(--text-xs); color:var(--color-text-dim); line-height:1.6;">
+            Phase 2: Cinematic Frontend<br>
+            FastAPI & SQLite SQL Database Backend activating in Phase 3–5.
+          </p>
+          <div style="margin-top:var(--space-4);">
+            <span class="badge badge-teal">v1.0.0 Frontend Live</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top: 1px solid rgba(255,255,255,0.06); padding-top:var(--space-6); font-size:var(--text-xs); color:var(--color-text-dim); flex-wrap:wrap; gap:var(--space-4);">
+        <div>VOYARA Travel Planner &copy; 2026. All rights reserved.</div>
+        <div>Crafted with GSAP, HTML5, CSS3 & Vanilla JavaScript.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts in dependency order -->
+  <script src="js/data.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/views/discover.js"></script>
+  <script src="js/views/destinations.js"></script>
+  <script src="js/views/detail.js"></script>
+  <script src="js/views/builder.js"></script>
+  <script src="js/views/budget.js"></script>
+  <script src="js/views/profile.js"></script>
+  <script src="js/views/auth.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

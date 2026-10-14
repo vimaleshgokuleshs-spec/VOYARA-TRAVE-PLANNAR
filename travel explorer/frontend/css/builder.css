@@ -1,0 +1,322 @@
+/* ==========================================================================
+   VOYARA SMART ITINERARY BUILDER STYLES
+   Photographic header backdrop, organized timeline, compact activity modal
+   ========================================================================== */
+
+.builder-header-area {
+  padding-top: calc(var(--nav-height) + var(--space-6));
+  padding-bottom: var(--space-6);
+}
+
+/* Photographic Destination Header Banner */
+.builder-hero-backdrop {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border-glass);
+}
+
+.builder-hero-overlay {
+  background: linear-gradient(90deg, rgba(3, 7, 18, 0.94) 0%, rgba(3, 7, 18, 0.75) 60%, rgba(3, 7, 18, 0.45) 100%);
+  padding: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* Trip Config Panel */
+.trip-config-bar {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-6);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: var(--space-3);
+  align-items: flex-end;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.config-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.config-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-champagne);
+  font-weight: 600;
+}
+
+/* Day Tabs Slider */
+.day-tabs-slider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.day-tab-btn {
+  padding: 0.65rem 1.1rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  min-width: 95px;
+}
+
+.day-tab-btn span {
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--color-text-dim);
+}
+
+.day-tab-btn:hover,
+.day-tab-btn.active {
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(20, 184, 166, 0.4);
+  color: #ffffff;
+}
+
+.day-tab-btn.active span {
+  color: var(--accent-teal-light);
+}
+
+.add-day-btn {
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.add-day-btn:hover {
+  border-color: var(--accent-champagne);
+  color: var(--accent-champagne);
+}
+
+/* Builder Main Layout */
+.builder-layout {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+
+/* Day Timeline Board */
+.day-board {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.day-board-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.day-board-title {
+  font-size: var(--text-xl);
+  color: #ffffff;
+}
+
+/* Activity Timeline Card */
+.activity-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+}
+
+.activity-item {
+  background: rgba(10, 17, 32, 0.55);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.activity-item:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(15, 25, 46, 0.7);
+}
+
+.activity-time-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--accent-champagne);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-category-tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--accent-teal-light);
+  margin-bottom: 2px;
+  display: block;
+}
+
+.activity-title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.activity-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-2);
+}
+
+.activity-meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+}
+
+.activity-cost {
+  color: var(--accent-emerald);
+  font-weight: 700;
+}
+
+.activity-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.btn-icon-tiny {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.75rem;
+}
+
+.btn-icon-tiny:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.btn-icon-tiny.delete:hover {
+  background: rgba(244, 63, 94, 0.18);
+  color: var(--accent-coral);
+  border-color: var(--accent-coral);
+}
+
+/* Builder Sidebar */
+.builder-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.builder-summary-widget {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.summary-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+  font-size: var(--text-xs);
+}
+
+.summary-metric:last-child {
+  border-bottom: none;
+}
+
+.summary-metric-val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .trip-config-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .trip-config-bar {
+    grid-template-columns: 1fr;
+  }
+  .activity-item {
+    flex-direction: column;
+  }
+}
